@@ -1,0 +1,365 @@
+/* General Styling */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+/* General Styling */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Root Variables for Colors */
+:root {
+    --mainColor: #216389;
+    --whiteColor: #ffffff;
+    --titleColor: #555555;
+    --labelColor: #333333;
+    --gradient1: #c31432; /* Starting gradient color */
+    --gradient2: #f2b632; /* Second gradient color */
+    --gradient3: #89216b; /* Third gradient color */
+    --gradient4: #c31432; /* Fourth gradient color */
+}
+
+body {
+    background: linear-gradient(to right, #da4453, var(--mainColor));
+    font-weight: 400;
+    min-height: 100vh;
+    display: grid;
+    place-content: center;
+    overflow: hidden;
+    animation: gradientAnimation 10s ease infinite; /* Animation for the gradient effect */
+    background: linear-gradient(to right, var(--gradient1), var(--gradient2), var(--gradient3), var(--gradient4));
+    background-size: 400% 400%; /* Ensures the gradient moves */
+}
+
+/* The Keyframes for the Gradient Animation */
+@keyframes gradientAnimation {
+    0% {
+        background-position: 0% 50%;
+    }
+    25% {
+        background-position: 50% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    75% {
+        background-position: 50% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+/* Social Media Icons */
+.social-icons {
+    position: absolute;
+    bottom: 250px; /* Adjust positioning as needed */
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 20px; /* Spacing between icons */
+    z-index: 10; /* Ensure icons stay above the image */
+}
+
+.social-icons a {
+    color: var(--whiteColor);
+    font-size: 2.5rem; /* Size of the icons */
+    text-decoration: none;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.social-icons a:hover {
+    color: var(--mainColor);
+    transform: scale(1.1); /* Slightly enlarge on hover */
+}
+
+/* Social Media Icon Font (example with Font Awesome, can replace with actual icons) */
+.social-icons i {
+    font-size: 2.5rem; /* Size of the icons */
+}
+
+/* Animated Movie Titles */
+.movie-titles {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    white-space: nowrap;
+    font-size: 3rem;
+    color: var(--whiteColor);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    animation: marquee 15s linear infinite;
+    z-index: 5;
+}
+
+/* Keyframe for the Movie Titles Animation (Moving across the image) */
+@keyframes marquee {
+    0% {
+        transform: translateX(100%);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+}
+/* Style for the wrapper that holds the left side and right side */
+.wrapper {
+    position: relative;
+    width: 70rem;
+    height: 60rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 0.5s ease-in-out;
+}
+
+/* Left side (Image) */
+.left-side {
+    position: relative;
+    width: 65%; /* Full width of the left side */
+    height: 100%;
+    overflow: hidden;
+    right: 22%;
+}
+
+
+
+/* Right Side (Forms) */
+.right-side {
+    width: 35%; /* Full width of the right side */
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    position: absolute;
+    left: 60%;
+}
+
+/* Form container */
+.form-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 88%;
+    background-color: var(--whiteColor);
+    border-radius: 1.5rem;
+    box-shadow: 0 0 5rem 0 rgba(0 0 0 / .2);
+    opacity: 0; /* Start hidden */
+    transform: scale(0.8); /* Start smaller */
+    visibility: hidden; /* Make sure it's not clickable */
+    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out, visibility 0s 0.5s;
+    margin-top: 10%;
+}
+
+/* When form is active (visible) */
+.form-container.active {
+    opacity: 1; /* Make visible */
+    transform: scale(1); /* Normalize size */
+    visibility: visible; /* Make it clickable and interactable */
+    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out, visibility 0s;
+}
+
+/* Heading inside the form */
+.form-container form h2 {
+    font-size: 2.4rem; /* Reduced size to fit better */
+    text-align: center;
+    text-transform: capitalize;
+    color: var(--titleColor);
+    margin-bottom: 1.5rem;
+}
+
+/* General Form field styling */
+.form-group {
+    position: relative;
+    width: 32rem;
+    margin: 1.2rem 0; /* Reduced margin */
+}
+
+/* Icon and Label Styles */
+.form-group i, .form-group label {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%); /* Vertically center the icon/label */
+    font-size: 1.4rem; /* Reduced font size */
+    text-transform: capitalize;
+    color: var(--labelColor);
+    padding: 0 .5rem;
+    pointer-events: none;
+    transition: all 0.3s ease; /* Smooth transition */
+}
+
+/* Icon Styles */
+.form-group i {
+    left: 1rem; /* Space between the left edge and the icon */
+    font-size: 1.6rem; /* Adjust icon size */
+    color: var(--labelColor);
+}
+
+/* Label Positioning */
+.form-group label {
+    left: 2.5rem; /* Adjust label position */
+}
+
+/* Input field Styles */
+.form-group input {
+    width: 100%;
+    height: 4rem;
+    padding-left: 3.5rem; /* Add space for the icon */
+    padding-right: 1rem; /* Optional: add padding on the right side */
+    border-radius: .5rem;
+    border: .1rem solid var(--labelColor);
+    font-size: 1.6rem;
+    color: var(--labelColor);
+    background: transparent;
+    transition: border-color 0.3s ease; /* Transition for focus state */
+}
+
+/* Focus/valid state for input */
+.form-group input:focus,
+.form-group input:valid {
+    border-color: var(--mainColor); /* Border color on focus */
+}
+
+/* Label and Icon transition when input is focused or has value */
+.form-group input:focus~label,
+.form-group input:valid~label {
+    top: -0.2rem; /* Move label above input */
+    font-size: 1.2rem; /* Smaller font size for label */
+    color: var(--mainColor); /* Change label color */
+    background-color: var(--whiteColor); /* Make sure label stays on top */
+    padding: 0 0.5rem; /* Optional: Add background padding to the label */
+}
+
+/* Ensure the icon stays aligned with label */
+.form-group input:focus~i,
+.form-group input:valid~i {
+    top: -0.4rem; /* Move icon along with label */
+}
+
+/* Additional input states */
+.form-group input:focus~label,
+.form-group input:valid~label {
+    color: var(--mainColor); /* Change label color when focused or filled */
+}
+
+/* Optional: add a box-shadow effect when input is focused */
+.form-group input:focus {
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2); /* Light shadow on focus */
+}
+
+.form-group select {
+    width: 100%;
+    padding-left: 3rem; /* Space for the icon */
+    padding-right: 1rem; /* Optional: right padding for select box */
+    height: 3rem;
+    font-size: 1.4rem;
+    border-radius: 0.5rem;
+    border: 1px solid #333; /* Border for select */
+    background-color: transparent;
+    color: #333;
+    transition: border-color 0.3s ease;
+}
+
+.form-group select:focus {
+    border-color: #216389; /* Change border color when focused */
+}
+
+/* Forgot password link */
+.forgot-pass {
+    margin: -1.5rem 0 1.5rem;
+}
+
+.forgot-pass a {
+    color: var(--labelColor);
+    text-decoration: none;
+    font-size: 1.3rem; /* Reduced size */
+    text-transform: capitalize;
+    transition: color 0.3s ease;
+}
+
+.forgot-pass a:hover {
+    color: var(--mainColor);
+}
+
+/* Submit Button */
+.btn {
+    background: linear-gradient(to right, #da4453, var(--mainColor));
+    color: var(--whiteColor);
+    text-transform: capitalize;
+    width: 100%;
+    height: 4rem;
+    font-size: 1.5rem; /* Reduced font size */
+    font-weight: 500;
+    outline: none;
+    border: none;
+    border-radius: .5rem;
+    cursor: pointer;
+    box-shadow: 0 .2rem 1rem rgba(0 0 0 / .4);
+    transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+
+.btn:hover {
+    box-shadow: 0 .4rem 1.5rem rgba(0 0 0 / .3);
+    background: linear-gradient(to right, var(--mainColor), #da4453);
+}
+
+/* Link Between Forms (Sign-up and Login Links) */
+.link {
+    text-align: center;
+    font-size: 1.4rem;
+    color: var(--labelColor);
+    margin: 2.5rem 0;
+}
+
+.link a {
+    text-transform: capitalize;
+    color: var(--mainColor);
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.link a:hover {
+    color: #da4453;
+}
+
+/* Animation for Form Transitions (with Rotation) */
+@keyframes slide-in-rotate {
+    0% {
+        transform: translateX(100%) rotate(90deg); /* Start from the right, rotated */
+        opacity: 0; /* Start hidden */
+    }
+    100% {
+        transform: translateX(0) rotate(0deg); /* End at original position with no rotation */
+        opacity: 1; /* Fully visible */
+    }
+}
+
+@keyframes slide-out-rotate {
+    0% {
+        transform: translateX(0) rotate(0deg); /* Start at original position with no rotation */
+        opacity: 1;
+    }
+    100% {
+        transform: translateX(-100%) rotate(-90deg); /* Move to the left with rotation */
+        opacity: 0; /* Hidden when leaving */
+    }
+}
+
+/* Apply animation to active form */
+.wrapper .form-container.active {
+    animation: slide-in-rotate 0.6s ease-out forwards;
+}
+
+/* Apply animation to non-active form (hiding) */
+.wrapper .form-container:not(.active) {
+    animation: slide-out-rotate 0.6s ease-in forwards;
+    visibility: hidden; /* Ensure form is hidden during the transition */
+}
